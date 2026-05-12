@@ -6,9 +6,9 @@ One command, both databases, no API knowledge needed.
 Usage:
     python recall.py --list                           # show available projects + node counts
     python recall.py "query"                          # semantic search across both DBs
-    python recall.py --project brightstar             # all nodes for a project (enterprise.db)
-    python recall.py "query" --project brightstar     # both: semantic + project filter
-    python recall.py --project brightstar --layer edge # project nodes filtered by layer
+    python recall.py --project my-project             # all nodes for a project (enterprise.db)
+    python recall.py "query" --project my-project     # both: semantic + project filter
+    python recall.py --project my-project --layer edge # project nodes filtered by layer
 
 Paths are hardcoded — this script is NOT portable. It lives at:
     C:\\Users\\<USER>\\.copilot\\tools\\recall.py
@@ -103,10 +103,10 @@ def _detect_project_from_cwd() -> Optional[str]:
     # Common path patterns → project slug mapping heuristics
     # Check if CWD contains recognizable project directory names
     path_hints = {
-        "poa-ttn-openretail": "ttn",
-        "poa-ttn": "ttn",
-        "barcode-preprocessor": "brightstar",
-        "brightstar": "brightstar",
+        # "my-repo-dir": "my-project",
+        # "my-other-repo": "my-project",
+        # Add your project path mappings here
+        # "my-repo-name": "my-project",
     }
     for hint, slug in path_hints.items():
         if hint in cwd and slug in projects:
@@ -270,7 +270,7 @@ def main():
     parser = argparse.ArgumentParser(description="Post-compaction recall — both databases")
     parser.add_argument("query", nargs="?", default=None, help="Semantic search query")
     parser.add_argument("--list", action="store_true", help="List available projects and node counts")
-    parser.add_argument("--project", "-p", default=None, help="Enterprise project slug (e.g. brightstar, ttn)")
+    parser.add_argument("--project", "-p", default=None, help="Enterprise project slug (e.g. project-a, project-b)")
     parser.add_argument("--layer", "-l", default=None, help="Filter enterprise by layer (map/flow/edge/decision/pattern)")
     parser.add_argument("--status", "-s", default=None, help="Filter enterprise by status (open/paused/crystallized)")
     parser.add_argument("--top", "-k", type=int, default=10, help="Max results per section (default: 10)")

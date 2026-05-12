@@ -1,6 +1,6 @@
 # Encryption Tools — Setup & Usage
 
-All tools live in `C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\tools\`.
+All tools live in `<YOUR_MEMORY_REPO>\tools\`.
 The AI reads this file at session start via the `suitcatclub-session-start` skill (see `SESSION-START.md` for fallback).
 
 ---
@@ -22,7 +22,7 @@ Do NOT share the master password in any chat, terminal log, or screen recording.
 Open a plain terminal (not a Copilot session):
 
 ```powershell
-python C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\tools\pq_crypt.py create-master
+python <YOUR_MEMORY_REPO>\tools\pq_crypt.py create-master
 ```
 
 Creates `perfmon_cache.db` — verifies the master password without storing it.
@@ -32,8 +32,8 @@ Creates `perfmon_cache.db` — verifies the master password without storing it.
 ## Step 2 — Add master bypass to the vault
 
 ```powershell
-python C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\tools\pq_crypt.py add-master `
-  C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\tools\pq_vault.md `
+python <YOUR_MEMORY_REPO>\tools\pq_crypt.py add-master `
+  <YOUR_MEMORY_REPO>\tools\pq_vault.md `
   "## Credentials"
 ```
 
@@ -46,7 +46,7 @@ After this: vault opens with vault password OR master password.
 ## Step 3 — Encrypt other files/sections
 
 ```powershell
-python C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\tools\pq_crypt.py encrypt `
+python <YOUR_MEMORY_REPO>\tools\pq_crypt.py encrypt `
   "C:\path\to\file.md" `
   "## Section Heading"
 ```
@@ -104,12 +104,12 @@ The master password is never typed in a Copilot session — only in a private te
 
 ```powershell
 # Decrypt with master
-python C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\tools\pq_crypt.py master-decrypt `
-  C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\tools\pq_vault.md "## Credentials"
+python <YOUR_MEMORY_REPO>\tools\pq_crypt.py master-decrypt `
+  <YOUR_MEMORY_REPO>\tools\pq_vault.md "## Credentials"
 
 # Re-encrypt with new generated password
-python C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\tools\pq_crypt.py encrypt `
-  C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\tools\pq_vault.md "## Credentials"
+python <YOUR_MEMORY_REPO>\tools\pq_crypt.py encrypt `
+  <YOUR_MEMORY_REPO>\tools\pq_vault.md "## Credentials"
 
 # Generate password with:
 python -c "import secrets; print(secrets.token_urlsafe(24))"
@@ -123,7 +123,7 @@ The AI understands this system by reading:
 3. The ai-context private repo for full context
 
 Nothing sensitive appears in any public repo.
-The taVNS `AGENTS.md` only references that tools exist — no paths, no key names.
+Project `AGENTS.md` files only reference that tools exist — no paths, no key names.
 
 ---
 

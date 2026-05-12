@@ -2,14 +2,14 @@
 Enterprise knowledge persistence — codebase maps, flows, decisions, edge cases, patterns.
 Five-layer system for multi-project technical memory.
 
-Design: Hugo + AI, May 2026
+Design: Human + AI, May 2026
 Built on same schema as memory_db.py — separate SQLite file, no personal data.
 
 ─── QUICK REFERENCE (read this after compaction, before first use) ──────────
 
 WHY: Technical memory for enterprise projects. Confidential details stay local.
      Cross-project patterns make the next similar project faster.
-     "The map of every codebase, not re-discovered every session." (Hugo, 2026-05-05)
+     "The map of every codebase, not re-discovered every session." (the human, 2026-05-05)
 
 SETUP:
     from tools.enterprise_db import init_db, save_enterprise, recall, recall_project
@@ -21,7 +21,7 @@ SAVE A NODE (main entry point):
         topic="Short title — what this is",        # REQUIRED
         summary="Rich technical context...",        # be generous — raw reasoning welcome
         layer="map",                               # REQUIRED: map|flow|edge|decision|pattern
-        project="ttn",                             # REQUIRED: slug e.g. ttn, brightstar
+        project="my-project",                             # REQUIRED: slug e.g. project-a, project-b
         session_date="2026-05-05",
         technical={                                # optional: 0.0-1.0 per dimension
             "confidence": 0.9,                    # how certain is this knowledge?
@@ -51,12 +51,12 @@ SAVE A NODE (main entry point):
     - embed=False + batch_embed_missing() at end is faster for bulk saves
 
 LOAD PROJECT CONTEXT (at session start):
-    nodes = recall_project(edb, "ttn")           # all nodes for project
-    nodes = recall_project(edb, "ttn", layer="edge")  # just gotchas for ttn
+    nodes = recall_project(edb, "my-project")           # all nodes for project
+    nodes = recall_project(edb, "my-project", layer="edge")  # just gotchas for my-project
 
 SEMANTIC SEARCH (across all projects or filtered):
     results = recall(edb, "device status registration")
-    results = recall(edb, "legacy bridge pattern", project="ttn")
+    results = recall(edb, "legacy bridge pattern", project="my-project")
 
 STATUS LIFECYCLE (track JIRA resolution, project completion, etc.):
     update_status(edb, node_id_or_slug, "crystallized")  # resolved/done
@@ -67,14 +67,14 @@ STATUS LIFECYCLE (track JIRA resolution, project completion, etc.):
 
 WHAT'S PENDING? (after compaction or session start):
     from tools.enterprise_db import recall_open
-    pending = recall_open(edb, project="ttn")   # open + paused nodes for project
+    pending = recall_open(edb, project="my-project")   # open + paused nodes for project
     pending = recall_open(edb)                   # all open/paused across projects
 
 LAYER RECALL (browse by type, no embedding needed):
-    maps      = recall_map(edb, project="ttn")
-    flows     = recall_flow(edb, project="ttn")
-    gotchas   = recall_edge(edb, project="ttn")
-    decisions = recall_decision(edb, project="ttn")
+    maps      = recall_map(edb, project="my-project")
+    flows     = recall_flow(edb, project="my-project")
+    gotchas   = recall_edge(edb, project="my-project")
+    decisions = recall_decision(edb, project="my-project")
     patterns  = recall_pattern(edb)              # patterns are cross-project by nature
 
 STATS:
@@ -264,7 +264,7 @@ def save_enterprise(
     """Save an enterprise knowledge node atomically.
 
     layer: map | flow | edge | decision | pattern
-    project: project slug e.g. 'ttn', 'brightstar'
+    project: project slug e.g. 'project-a', 'project-b'
     technical: dict of {dimension: float 0-1} — quality signals
     edges: list of (target_uuid, relationship, weight) tuples
 
@@ -587,7 +587,7 @@ def recall(
     """Semantic search across enterprise nodes.
 
     Combines: vector similarity + graph expansion + recency + technical metadata.
-    Optionally filter by project ('ttn', 'brightstar') or layer ('map', 'edge', etc.).
+    Optionally filter by project ('project-a', 'project-b') or layer ('map', 'edge', etc.).
 
     Returns list of dicts: node_id, slug, topic, summary, score, layer, project
     """

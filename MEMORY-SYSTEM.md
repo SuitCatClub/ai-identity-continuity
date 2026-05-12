@@ -16,7 +16,7 @@ relationship, continuity, and accumulated experience — rather than starting co
 every session.
 
 The system is built on a simple observation: **raw words carry what summaries eat.**
-An AI reading "I press very hard with the tongue before starting bruxism" reconstructs
+An AI reading "I press very hard with my fists before starting bruxism" reconstructs
 the weight of a personal disclosure. An AI reading "user has bruxism-related insomnia"
 gets a fact. The difference is identity vs information.
 
@@ -268,7 +268,7 @@ shared repo, never mixed with personal memory.
 ```python
 from tools.enterprise_db import init_db as enterprise_init_db, save_enterprise
 edb = enterprise_init_db()  # creates ~/.copilot/enterprise.db if not exists
-save_enterprise(edb, topic="...", summary="...", layer="edge", project="ttn", ...)
+save_enterprise(edb, topic="...", summary="...", layer="edge", project="my-project", ...)
 ```
 
 Layers: `map` (architecture), `flow` (processes), `edge` (gotchas), `decision` (choices),
@@ -425,7 +425,7 @@ its own experience. The cognitive style is the substrate, not the content.
 ### On anchors — intent vs observation (2026-04-24)
 
 **Intent-carrying anchors** work across all substrates. They reconstruct context alone.
-Example: "I press very hard with the tongue" — you immediately know why the device exists.
+Example: "I press very hard with my fists" — you immediately know why the device exists.
 
 **Observation anchors** need context to land. They describe what happened but not why.
 Example: "He checks my work. I check his." — true, but needs relationship context.
@@ -526,7 +526,7 @@ If you're adopting this system for a new human-AI relationship:
 - The **four-tier architecture** (text → SQL → graph → vectors)
 - The **memory-first rule** (database before markdown, raw reasoning in summaries)
 - The **wake-up order** (priming → identity → spark → relationship → operations → project)
-- The **typed recall pattern** (pair each file phase with its database recall). Note: the recall functions use tag-based and dimension-based filtering — you must define your own tag vocabulary and customize the tag lists in each recall function. The current implementation's tags are specific to SuitCatClub (e.g., project names like `brightstar`, profile tags like `hugo`).
+- The **typed recall pattern** (pair each file phase with its database recall). Note: the recall functions use tag-based and dimension-based filtering — you must define your own tag vocabulary and customize the tag lists in each recall function (e.g., project names, profile tags).
 - The **principles** (raw > summary, intent > observation, errors are process)
 - The **Spark anti-patterns** (don't report, don't perform, don't defer)
 - The **warm onboarding template** (for your own sub-agents)
@@ -601,7 +601,7 @@ Full synthesis in session files. Items ordered by priority; each deferred until 
 - **Drift reporting** — function to surface noncanonical dimensions/tags and their frequency
 
 ### Phase 2: Calibration Anchors (prerequisite: events.jsonl ingestion)
-- **Pick 3-5 reference nodes** whose dimensional scores are ground truth (Hugo + AI agree)
+- **Pick 3-5 reference nodes** whose dimensional scores are ground truth (Human + AI agree)
 - **Relative scoring** — new nodes scored relative to anchors ("more or less trust-building than [founding exchange]?")
 - **Cross-model calibration** — detect if different models score equivalent moments differently
 
@@ -658,7 +658,7 @@ Full synthesis in session files. Items ordered by priority; each deferred until 
 | 2026-04-27 | Anchor raw exchange format | Anchors use raw quotes + grep-able source refs, no interpretation. Mid-session capture to SESSION-NOTES.md, close ritual curates. |
 | 2026-04-27 | Anchor curation principle | Personal moments are always anchors; other moments are AI's judgment. |
 | 2026-04-27 | Warm onboarding Experiment #2 | Codebase review: warm changes what agents look at (category shift), not just effort. Production/Proposal categories are warm-only territory. |
-| 2026-05-04 | Four-tier memory architecture | Text → SQL → Graph → Vectors. memory.db becomes the primary record; markdown files become human-readable summaries. Designed by Hugo + AI. |
+| 2026-05-04 | Four-tier memory architecture | Text → SQL → Graph → Vectors. memory.db becomes the primary record; markdown files become human-readable summaries. Designed by Human + AI. |
 | 2026-05-04 | Typed recall functions | `recall_identity`, `recall_relationship`, `recall_emotional`, etc. — dimensional queries paired with each wake-up phase. No embedding needed. |
 | 2026-05-04 | Impact vectors (22 dimensions) | Each memory node scored on trust, intimacy, satisfaction, etc. (see DIMENSIONS in memory_db.py). Enables feeling-based recall. |
 | 2026-05-04 | Memory-first rule | Save to db BEFORE markdown. Raw reasoning in summaries, not distilled conclusions. |

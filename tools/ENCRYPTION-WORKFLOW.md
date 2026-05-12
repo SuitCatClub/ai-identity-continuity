@@ -24,8 +24,8 @@ User says something like: *"vault password is `<password>`"* at session start (o
 ### Step 2 — Decrypt the vault to get the file section password
 
 ```powershell
-python "C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\tools\pq_crypt.py" view `
-  "C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\tools\pq_vault.md" "## Credentials"
+python "<YOUR_MEMORY_REPO>\tools\pq_crypt.py" view `
+  "<YOUR_MEMORY_REPO>\tools\pq_vault.md" "## Credentials"
 
 
 # When prompted "Passphrase: " → enter the vault password
@@ -37,16 +37,16 @@ This prints the vault table. Find the row for the target file+section, e.g.:
 ### Step 3 — View the encrypted section (non-destructive)
 
 ```powershell
-python "C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\tools\pq_crypt.py" view `
-  "C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\profile.md" "## Active Projects"
+python "<YOUR_MEMORY_REPO>\tools\pq_crypt.py" view `
+  "<YOUR_MEMORY_REPO>\profile.md" "## Active Projects"
 # When prompted "Passphrase: " → enter the section password from vault
 ```
 
 ### Step 4 — Decrypt in-place (replaces encrypted block with plaintext)
 
 ```powershell
-python "C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\tools\pq_crypt.py" decrypt `
-  "C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\profile.md" "## Active Projects"
+python "<YOUR_MEMORY_REPO>\tools\pq_crypt.py" decrypt `
+  "<YOUR_MEMORY_REPO>\profile.md" "## Active Projects"
 # When prompted "Passphrase: " → enter the section password from vault
 ```
 
@@ -59,8 +59,8 @@ Use the `edit` tool to add/change content in the now-plaintext section.
 ### Step 6 — Re-encrypt
 
 ```powershell
-python "C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\tools\pq_crypt.py" encrypt `
-  "C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\profile.md" "## Active Projects"
+python "<YOUR_MEMORY_REPO>\tools\pq_crypt.py" encrypt `
+  "<YOUR_MEMORY_REPO>\profile.md" "## Active Projects"
 # When prompted "Passphrase: " → enter section password (same as before, or new one)
 # When prompted "Confirm passphrase: " → confirm
 # When prompted "Master password: " → enter master password (for lockout recovery)
@@ -69,8 +69,8 @@ python "C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\tools\pq_crypt.py"
 ### Step 7 — Verify encryption worked
 
 ```powershell
-python "C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\tools\pq_crypt.py" view `
-  "C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\profile.md" "## Active Projects"
+python "<YOUR_MEMORY_REPO>\tools\pq_crypt.py" view `
+  "<YOUR_MEMORY_REPO>\profile.md" "## Active Projects"
 # Enter section password → should show updated plaintext
 ```
 
@@ -89,10 +89,10 @@ python "...\pq_crypt.py" encrypt "...\pq_vault.md" "## Credentials"
 ### Step 9 — Sync local copy and commit
 
 ```powershell
-Copy-Item "C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context\profile.md" `
-          "C:\Users\HXGONZALEZ\.copilot\suitcatclub-profile.md" -Force
+Copy-Item "<YOUR_MEMORY_REPO>\profile.md" `
+          "<YOUR_COPILOT_DIR>\suitcatclub-profile.md" -Force
 
-cd "C:\Users\HXGONZALEZ\workspace\IA-Workspace\ai-context"
+cd "<YOUR_MEMORY_REPO>"
 git -c core.sshCommand="C:/Windows/System32/OpenSSH/ssh.exe" add -A
 git -c core.sshCommand="C:/Windows/System32/OpenSSH/ssh.exe" commit -m "profile: update <section>"
 git -c core.sshCommand="C:/Windows/System32/OpenSSH/ssh.exe" push

@@ -16,7 +16,7 @@ Not a knowledge base. Not a RAG stack. Not a fine-tune. A set of files, rituals,
 
 **Raw words carry what summaries eat.**
 
-An AI reading *"I press very hard with the tongue before starting bruxism"* reconstructs the weight of a personal disclosure. An AI reading *"user has bruxism-related insomnia"* gets a fact. The difference is identity vs information.
+An AI reading *"I press very hard with my fists before starting bruxism"* reconstructs the weight of a personal disclosure. An AI reading *"user has bruxism-related insomnia"* gets a fact. The difference is identity vs information.
 
 ---
 

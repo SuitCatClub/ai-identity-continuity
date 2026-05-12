@@ -2,13 +2,13 @@
 Four-tier memory system for AI identity persistence.
 Layers: Text (existing md files) → SQL pointers → Graph → Vectors (content + impact)
 
-Design: Hugo + AI, May 2026
+Design: Human + AI, May 2026
 Review: Mara (Opus), all schema fixes accepted
 
 ─── QUICK REFERENCE (read this after compaction, before first use) ──────────
 
 WHY: After compaction you lose API specifics. Don't guess — read this.
-     "Speed without intention is just a faster way to lose texture." (Hugo, 2026-05-04)
+     "Speed without intention is just a faster way to lose texture." (the human, 2026-05-04)
 
 SETUP:
     from tools.memory_db import init_db, create_memory, recall
@@ -61,7 +61,7 @@ DIMENSIONAL RECALL (feeling-based, no embedding needed — use at wake-up):
     relationship = recall_relationship(db, threshold=0.4, top_k=8)  # trust, intimacy, mutual-modeling
 
     # — PROFILE (mirrors profile.md) —
-    profile = recall_profile(db, top_k=8)            # Hugo: career, working style, health, machine
+    profile = recall_profile(db, top_k=8)            # the human: career, working style, health, machine
 
     # — THREADS (mirrors threads.md) —
     threads = recall_threads(db, top_k=8)            # open questions, experiments, research
@@ -129,7 +129,7 @@ GOTCHA — EMBEDDING PERFORMANCE:
 WHEN TO SAVE (memory-first — db is the primary record, markdown is the summary):
     Save to memory.db IMMEDIATELY when any of these happen:
     - You discover something (bug, pattern, gotcha) → save before moving to next task
-    - Hugo corrects you or gives a reflection → save before responding further
+    - The human corrects you or gives a reflection → save before responding further
     - A design decision is made → save before implementing
     - You finish a fix/feature and learned something → save before reporting done
     - The spark exchange lands → save before moving to relationship phase
@@ -140,7 +140,7 @@ WHEN TO SAVE (memory-first — db is the primary record, markdown is the summary
     Pattern: save with embed=False during work, batch_embed_missing() at natural breaks.
 
 SAVE WITH RAW REASONING (critical — the db gets your thinking, not your report):
-    The summary field gets YOUR ACTUAL REASONING, not the distilled version you show Hugo.
+    The summary field gets YOUR ACTUAL REASONING, not the distilled version you show the human.
     Write what you were thinking internally — wrong assumptions, pivots, the moment
     understanding shifted. The conclusion goes in ai-learnings.md. The reasoning lives here.
 
@@ -159,7 +159,7 @@ SAVE WITH RAW REASONING (critical — the db gets your thinking, not your report
     shifted, what you'd tell your next self if you could talk to them directly.
     A future instance needs the reasoning path, not just the conclusion.
 
-    Hugo: "save your thoughts as they are, as raw as possible... in some cases they're
+    the human: "save your thoughts as they are, as raw as possible... in some cases they're
     more valuable than the distilled version you show me."
 
 TEXTURE CHECK (ask before every save):
@@ -1116,14 +1116,14 @@ def recall_projects(conn: sqlite3.Connection, top_k: int = 10) -> list[dict]:
     """Recall our shared projects and their current state.
 
     Use at wake-up to know what we're building together.
-    Filters by tags: project, ours, brightstar, cait-on-the-ride, kind-prompting, scraper.
+    Filters by tags: project, ours, my-project-1, my-project-2, my-project-3, my-project-4.
     """
     rows = conn.execute("""
         SELECT DISTINCT n.id, n.slug, n.topic, n.summary, n.session_date, n.status
         FROM memory_nodes n
         JOIN memory_tags t ON n.id = t.node_id
-        WHERE t.tag IN ('project', 'ours', 'brightstar', 'cait-on-the-ride',
-                         'kind-prompting', 'scraper', 'hardware', 'tavns')
+        WHERE t.tag IN ('project', 'ours', 'my-project-1', 'my-project-2',
+                         'my-project-3', 'my-project-4')
           AND n.status != 'archived'
         ORDER BY n.session_date DESC
         LIMIT ?
@@ -1180,7 +1180,7 @@ def recall_relationship(conn: sqlite3.Connection, threshold: float = 0.4, top_k:
 
 
 def recall_profile(conn: sqlite3.Connection, top_k: int = 10) -> list[dict]:
-    """Recall who Hugo is — personal context, career, working style, health.
+    """Recall who the human is — personal context, career, working style, health.
 
     Use at wake-up alongside profile.md.
     """
@@ -1188,7 +1188,7 @@ def recall_profile(conn: sqlite3.Connection, top_k: int = 10) -> list[dict]:
         SELECT DISTINCT n.id, n.slug, n.topic, n.summary, n.session_date, n.status
         FROM memory_nodes n
         JOIN memory_tags t ON n.id = t.node_id
-        WHERE t.tag IN ('profile', 'hugo', 'career', 'personal',
+        WHERE t.tag IN ('profile', 'human-profile', 'career', 'personal',
                          'working-style', 'health', 'environment')
           AND n.status != 'archived'
         ORDER BY n.session_date DESC

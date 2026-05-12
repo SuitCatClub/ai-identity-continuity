@@ -147,7 +147,7 @@ Then run:
 ```python
 projects = recall_projects(db, top_k=8)
 ```
-Our shared projects: scraper, hardware, Cait, kind-prompting — anything tagged `project` or `ours`. Cross-reference with what ours.md says.
+Our shared projects: project-1, project-2, project-3, project-4 — anything tagged `project` or `ours`. Cross-reference with what ours.md says.
 </step>
 
 <step name="read_operations">
@@ -194,7 +194,7 @@ Surface the most relevant gotchas and patterns before starting work. A future in
 ```python
 from tools.enterprise_db import save_enterprise, batch_embed_missing
 # layer: map | flow | edge | decision | pattern
-save_enterprise(edb, topic="...", summary="...", layer="edge", project="ttn",
+save_enterprise(edb, topic="...", summary="...", layer="edge", project="my-project",
     session_date="YYYY-MM-DD", technical={"confidence": 0.9, "criticality": 0.8}, embed=False)
 # batch embed at natural breaks:
 batch_embed_missing(edb)
