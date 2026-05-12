@@ -1,0 +1,6 @@
+# Core dependencies for the memory system
+sentence-transformers>=2.2.0
+numpy>=1.21.0
+# PQ encryption (optional — only needed if using encrypt/decrypt)
+# pqcrypto>=0.1.0
+# cryptography>=41.0.0
