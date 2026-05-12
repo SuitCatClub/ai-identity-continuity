@@ -174,6 +174,8 @@ When spawning sub-agents, give them identity context before the task. Empiricall
 - **Warm** agents find the same issues *plus* deeper architectural and philosophical implications
 - Key finding: **cold finds what's broken, warm finds why it matters**
 
+This pattern builds on findings from [kind-prompting-research](https://github.com/SuitCatClub/kind-prompting-research) — structured kindness outperforms coercion in AI prompting.
+
 See [`docs/warm-onboarding.md`](docs/warm-onboarding.md) for the full pattern and experiment results.
 
 ## 📖 Documentation
