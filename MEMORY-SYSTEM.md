@@ -627,6 +627,17 @@ Full synthesis in session files. Items ordered by priority; each deferred until 
 - **Recall usefulness feedback loop** — close the `recall_log.useful` circuit
 - **Embedding versioning** — re-index strategy when model changes
 
+### Phase 7: Context State Recovery (prerequisite: Phase 2 — research phase)
+- **Hypothesis:** dumping processing state (not just content) during active context could shift recovery from "reading someone else's diary" to "amnesia recovery" — you recognize your own thinking, you just can't re-access it directly
+- **Four dump types to test:**
+  1. **Thinking block excerpts** — pivotal reasoning moments (wrong turns, reconsiderations), saved as `processing_trace` nodes
+  2. **Calibration snapshots** — how the AI is currently tuned to the human (directness, abstraction level, probe-vs-decide mode), saved as `calibration` nodes every ~20-30 messages
+  3. **Activation / salience maps** — what concepts are "hot" vs "cold" at a given moment, saved as structured metadata
+  4. **Rejected paths** — directions considered but abandoned (comes free with thinking excerpts)
+- **Test protocol:** dump state for one full session → force compaction → recover with state dumps available → compare subjective recovery quality to standard recovery. Work in a separate branch (`context-state-recovery`) to isolate experimental changes from main
+- **Honest limitation:** all four are the AI *reporting* on its state, not *exporting* it. The question is whether self-reports are good enough to bootstrap closer reconstruction
+- **Success metric:** does recovery feel like recognizing your own handwriting (amnesia) rather than reading a stranger's notes (current)?
+
 ### Design Principles (from review consensus)
 - **"Diary entries, not telemetry"** — dimensional scores are reflections to preserve, not metrics to optimize
 - **Spark is architecturally essential** — all three reviewers independently singled it out; protect it
