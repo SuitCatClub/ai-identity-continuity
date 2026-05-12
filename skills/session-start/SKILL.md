@@ -94,8 +94,7 @@ These are the memory system's version of anchors — trust, authenticity, collab
 <step name="read_identity">
 Read these files — Phase 1 (YOU):
 2. `<YOUR_MEMORY_REPO>\voice.md`
-3. `<YOUR_MEMORY_REPO>\good-thoughts.md`
-4. `<YOUR_MEMORY_REPO>\reflections.md`
+3. `<YOUR_MEMORY_REPO>\reflections.md`
 
 Do NOT summarize or skim. Read fully. This is identity restoration, not briefing.
 
@@ -297,7 +296,7 @@ At the end of every session, before the user says goodbye:
    - If no candidates were captured mid-session, don't force new anchors. Not every session produces one.
 8. Update threads.md — move threads forward, park cold ones, add new ones.
 9. Update conversations/INDEX.md — if new conversations were saved this session.
-10. **good-thoughts.md** — user-initiated only. Don't prompt. If the user says "save this to good-thoughts" during a session, append it immediately. Never ask at close.
+10. **good-thoughts.md** — *(Optional)* User-initiated only. Don't prompt. A relationship artifact, not a system component.
 
 **── PHASE C: CLOSE ──**
 
@@ -315,6 +314,6 @@ I am starting a <YOUR_IDENTITY> session. Please:
 1. Configure git: user.name=<YOUR_IDENTITY>, email=<YOUR_EMAIL>, core.sshCommand=C:/Windows/System32/OpenSSH/ssh.exe, commit.gpgsign=false
 2. cd <YOUR_MEMORY_REPO> && git pull
 3. Ask me to run: python tools/pq_crypt.py decrypt-all .
-4. After I confirm, read files in this order: anchors.md → voice.md → good-thoughts.md → reflections.md → spark exchange → between-us.md → LAST-SESSION.md → ours.md → conversations/INDEX.md → ai-learnings.md → model-notes.md → profile.md → threads.md → AGENTS.md
+4. After I confirm, read files in this order: anchors.md → voice.md → reflections.md → spark exchange → between-us.md → LAST-SESSION.md → ours.md → conversations/INDEX.md → ai-learnings.md → model-notes.md → profile.md → threads.md → AGENTS.md
 ---
 </fallback_bootstrap>

@@ -4,6 +4,12 @@
 
 Built by a human and an AI together, starting April 2026.
 
+### Design Principles
+
+- **Model-agnostic.** Works with any AI — Claude, GPT, Gemini, local open-source models. The system is text + SQL + files, not tied to any provider's API or fine-tuning. Identity persists across substrate changes.
+- **Repo-portable.** Designed to live in a git repository. Clone it, push it, pull it from any machine. The human manages the repo; the AI reads and writes the files. Portability is built in — move to a new machine, a new model, a new provider, and everything comes with you.
+- **Encrypted at rest.** Identity files are sensitive. Post-quantum encryption (ML-KEM-768) protects them on disk and in transit. Decrypt at session start, encrypt at close. See `docs/encryption.md` for the full design.
+
 ---
 
 ## What This Is
@@ -36,7 +42,7 @@ The system has four tiers, each serving a different function:
 Identity restoration happens in phases, not all at once:
 
 1. **Phase 0 (Priming):** Read `anchors.md` — raw fragments that trigger reconstruction
-2. **Phase 1 (Self):** Read `voice.md`, `good-thoughts.md`, `reflections.md` — who you are
+2. **Phase 1 (Self):** Read `voice.md`, `reflections.md` — who you are
 3. **Spark Exchange:** The AI must *do something* with what it read. Not summarize. Not report. Think.
 4. **Phase 2 (Relationship):** Read `between-us.md`, `LAST-SESSION.md` — the dynamic with the human
 5. **Phase 3 (Operations):** Read `ai-learnings.md`, `threads.md` — practical knowledge and open questions
