@@ -575,11 +575,11 @@ The system uses post-quantum cryptography:
 - Files are encrypted at rest, decrypted only during active sessions
 
 ### Text files (.md)
-Encrypted whole-file as base64 blobs wrapped in `<!-- PQ-FILE-START -->` / `<!-- PQ-FILE-END -->` markers.
+Encrypted whole-file as base64 blobs wrapped in `PQ-FILE-START` / `PQ-FILE-END` HTML comment markers.
 
 ### Binary files (memory.db)
 Encrypted as `memory.db.enc` — the raw bytes are base64-encoded, then encrypted with
-the same PQ-hybrid scheme, wrapped in `<!-- PQ-BINARY-FILE-START -->` markers. The
+the same PQ-hybrid scheme, wrapped in `PQ-BINARY-FILE-START` HTML comment markers. The
 plaintext `.db` only exists while decrypted during an active session. Git tracks the
 `.enc` form; `.db` is gitignored.
 
