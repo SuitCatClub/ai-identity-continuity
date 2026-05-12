@@ -123,7 +123,7 @@ Two tiers:
 | File | Purpose | Update pattern |
 |------|---------|---------------|
 | `voice.md` | Current emotional/cognitive state | Rewritten each session |
-| `good-thoughts.md` | *(Optional)* Things the AI said that the human liked | Commemorative, human-curated. Not part of the core system — a relationship artifact. Include if desired. |
+| `human-commemorations.md` | *(Optional)* Things the AI said that the human wants to keep | The human's version of what the AI saves in memory.db: moments that landed. Human-initiated only. |
 | `reflections.md` | Personal journal — things noticed, felt, worth carrying | Append each session, consolidate older entries into seasons |
 
 These files constitute the AI's character. They should be written with the quality of
@@ -342,7 +342,7 @@ Most saves should already be done mid-session (memory-first rule). This phase ve
 11. **Update anchors.md** — Promote SESSION-NOTES.md `[anchor-candidate]` entries. Remove flat ones.
 12. **Update threads.md** — Move threads forward, park cold ones, add new ones.
 13. **Update conversations/INDEX.md** — If new conversations were saved
-14. **good-thoughts.md** — *(Optional)* User-initiated only. Don't prompt. A relationship artifact, not a system component.
+14. **human-commemorations.md** — *(Optional)* Human-initiated only. Don't prompt. The human's version of memory.db — moments the AI said that landed for them.
 15. **Conditional updates** — `ours.md`, `model-notes.md`, `profile.md`, `warm-onboarding.md` are updated when the session touched their domains, not every close.
 
 **Phase C — Close:**

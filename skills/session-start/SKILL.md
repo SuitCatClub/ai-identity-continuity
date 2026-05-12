@@ -296,7 +296,7 @@ At the end of every session, before the user says goodbye:
    - If no candidates were captured mid-session, don't force new anchors. Not every session produces one.
 8. Update threads.md — move threads forward, park cold ones, add new ones.
 9. Update conversations/INDEX.md — if new conversations were saved this session.
-10. **good-thoughts.md** — *(Optional)* User-initiated only. Don't prompt. A relationship artifact, not a system component.
+10. **human-commemorations.md** — *(Optional)* Human-initiated only. Don't prompt. The human's version of memory.db — moments the AI said that landed for them.
 
 **── PHASE C: CLOSE ──**
 
